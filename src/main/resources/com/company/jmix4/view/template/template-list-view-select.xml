@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <view xmlns="http://jmix.io/schema/flowui/view"
       xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
-      title="msg://templateListView.title"
+      title="msg://templateListViewSelect.title"
       focusComponent="templatesDataGrid">
     <data>
         <collection id="templatesDc"
@@ -31,9 +31,6 @@
             <properties include=".*"/>
         </genericFilter>
         <hbox id="buttonsPanel" classNames="buttons-panel">
-            <button id="createBtn" action="templatesDataGrid.create"/>
-            <button id="editBtn" action="templatesDataGrid.edit"/>
-            <button id="removeBtn" action="templatesDataGrid.remove"/>
             <simplePagination id="pagination" dataLoader="templatesDl"/>
         </hbox>
         <dataGrid id="templatesDataGrid"
@@ -43,12 +40,11 @@
                   columnReorderingAllowed="true"
                   selectionMode="MULTI">
             <actions>
-                <action id="create" type="list_create"/>
-                <action id="edit" type="list_edit"/>
-                <action id="remove" type="list_remove"/>
             </actions>
             <columns resizable="true">
                 <column property="name"/>
+                <column property="countPoints"/>
+                <column property="description"/>
             </columns>
         </dataGrid>
         <hbox id="lookupActions" visible="false">
