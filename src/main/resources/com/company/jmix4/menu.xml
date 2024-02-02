@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://jmix.io/schema/flowui/menu">
+
+    <menu id="application" title="msg://com.company.jmix4/menu.application.title" opened="true">
+        <item view="User.list" title="msg://com.company.jmix4.view.user/UserListView.title"/>
+        <item view="PointTemplate.list" title="msg://com.company.jmix4.view.pointtemplate/pointTemplateListView.title"/>
+        <item view="Template.list" title="msg://com.company.jmix4.view.template/templateListView.title"/>
+        <item view="PointCheckList.list"
+              title="msg://com.company.jmix4.view.pointchecklist/pointCheckListListView.title"/>
+        <item view="CheckList.list" title="msg://com.company.jmix4.view.checklist/checkListListView.title"/>
+        <item view="CheckSides.list" title="msg://com.company.jmix4.view.checksides/checkSidesListView.title"/>
+        <item view="Audit_.list" title="msg://com.company.jmix4.view.audit/auditListView.title"/>
+    </menu>
+
+</menu-config>

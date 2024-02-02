@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://checkListListView.title"
+      focusComponent="checkListsDataGrid">
+    <data>
+        <collection id="checkListsDc"
+                    class="com.company.jmix4.entity.CheckList">
+            <fetchPlan extends="_base">
+                <property name="pointCheckLists" fetchPlan="_base">
+                    <property name="checkList" fetchPlan="_base">
+                        <property name="pointCheckLists" fetchPlan="_base">
+                            <property name="checkList" fetchPlan="_base"/>
+                        </property>
+                    </property>
+                </property>
+                <property name="audit" fetchPlan="_base">
+                    <property name="checkSide" fetchPlan="_base">
+                        <property name="audit" fetchPlan="_base"/>
+                    </property>
+                </property>
+            </fetchPlan>
+            <loader id="checkListsDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from CheckList e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <genericFilter id="genericFilter"
+                       dataLoader="checkListsDl">
+            <properties include=".*"/>
+        </genericFilter>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createBtn" action="checkListsDataGrid.create"/>
+            <button id="editBtn" action="checkListsDataGrid.edit"/>
+            <button id="removeBtn" action="checkListsDataGrid.remove"/>
+            <simplePagination id="pagination" dataLoader="checkListsDl"/>
+        </hbox>
+        <dataGrid id="checkListsDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="checkListsDc"
+                  columnReorderingAllowed="true">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+            </actions>
+            <columns resizable="true">
+                <column property="name"/>
+                <column property="description"/>
+                <column property="audit"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectBtn" action="selectAction"/>
+            <button id="discardBtn" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>

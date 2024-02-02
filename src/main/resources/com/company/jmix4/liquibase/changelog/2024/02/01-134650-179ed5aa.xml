@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="JMIX4">
+        <createTable tableName="AUDIT_">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_AUDIT_"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="CHECK_SIDE_ID" type="UUID"/>
+            <column name="DESCRIPTION" type="CLOB"/>
+            <column name="DATE_END" type="DATE"/>
+            <column name="STATUS_AUDIT" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="JMIX4">
+        <createTable tableName="CHECK_LIST">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_CHECK_LIST"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="DESCRIPTION" type="VARCHAR(255)"/>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="AUDIT_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="JMIX4">
+        <createTable tableName="CHECK_SIDES">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_CHECK_SIDES"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="PHONE" type="VARCHAR(255)"/>
+            <column name="PLACE" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="4" author="JMIX4">
+        <createTable tableName="POINT_CHECK_LIST">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_POINT_CHECK_LIST"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CONTENT" type="VARCHAR(255)"/>
+            <column name="CONCLUSION" type="CLOB"/>
+            <column name="STATUS_CHECK_LIST" type="INT"/>
+            <column name="CHECK_LIST_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="5" author="JMIX4">
+        <createIndex indexName="IDX_AUDIT__CHECK_SIDE" tableName="AUDIT_">
+            <column name="CHECK_SIDE_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="CHECK_SIDE_ID" baseTableName="AUDIT_"
+                                 constraintName="FK_AUDIT__ON_CHECK_SIDE" referencedColumnNames="ID"
+                                 referencedTableName="CHECK_SIDES"/>
+    </changeSet>
+    <changeSet id="6" author="JMIX4">
+        <createIndex indexName="IDX_CHECK_LIST_AUDIT" tableName="CHECK_LIST">
+            <column name="AUDIT_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="AUDIT_ID" baseTableName="CHECK_LIST"
+                                 constraintName="FK_CHECK_LIST_ON_AUDIT" referencedColumnNames="ID"
+                                 referencedTableName="AUDIT_"/>
+    </changeSet>
+    <changeSet id="7" author="JMIX4">
+        <createIndex indexName="IDX_POINT_CHECK_LIST_CHECK_LIST" tableName="POINT_CHECK_LIST">
+            <column name="CHECK_LIST_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="CHECK_LIST_ID" baseTableName="POINT_CHECK_LIST"
+                                 constraintName="FK_POINT_CHECK_LIST_ON_CHECK_LIST" referencedColumnNames="ID"
+                                 referencedTableName="CHECK_LIST"/>
+    </changeSet>
+</databaseChangeLog>

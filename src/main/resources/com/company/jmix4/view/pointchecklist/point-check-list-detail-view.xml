@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://pointCheckListDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="pointCheckListDc"
+                  class="com.company.jmix4.entity.PointCheckList">
+            <fetchPlan extends="_base">
+                <property name="checkList" fetchPlan="_base">
+                    <property name="pointCheckLists" fetchPlan="_base">
+                        <property name="checkList" fetchPlan="_base">
+                            <property name="pointCheckLists" fetchPlan="_base"/>
+                        </property>
+                    </property>
+                    <property name="audit" fetchPlan="_base">
+                        <property name="checkSide" fetchPlan="_base"/>
+                    </property>
+                </property>
+            </fetchPlan>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="pointCheckListDc">
+            <textField id="contentField" property="content"/>
+            <textArea id="conclusionField" height="9.5em" property="conclusion"/>
+            <select id="statusCheckListField" property="statusCheckList"/>
+            <entityPicker id="checkListField" property="checkList">
+                <actions>
+                    <action id="entityLookup" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+        </formLayout>
+        <hbox id="detailActions">
+            <button id="saveAndCloseBtn" action="saveAction"/>
+            <button id="closeBtn" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>
