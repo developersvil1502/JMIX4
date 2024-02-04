@@ -6,7 +6,9 @@
         <instance id="auditDc"
                   class="com.company.jmix4.entity.Audit">
             <fetchPlan extends="_base">
+
                 <property name="checkLists" fetchPlan="_base">
+               
                     <property name="pointCheckLists" fetchPlan="_base">
                         <property name="checkList" fetchPlan="_base">
                             <property name="pointCheckLists" fetchPlan="_base"/>
