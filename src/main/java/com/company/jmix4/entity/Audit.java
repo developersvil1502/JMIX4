@@ -11,9 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "AUDIT_", indexes = {
-        @Index(name = "IDX_AUDIT__CHECK_SIDE", columnList = "CHECK_SIDE_ID")
-})
+@Table(name = "AUDIT_")
 @Entity(name = "Audit_")
 public class Audit {
     @JmixGeneratedValue
@@ -29,9 +27,8 @@ public class Audit {
     @Column(name = "NAME")
     private String name;
 
-    @JoinColumn(name = "CHECK_SIDE_ID")
-    @OneToOne(fetch = FetchType.LAZY)
-    private CheckSides checkSide;
+    @Column(name = "CHECK_SIDE")
+    private String checkSide;
 
     @Column(name = "DESCRIPTION")
     @Lob
@@ -46,6 +43,14 @@ public class Audit {
     @Composition
     @OneToMany(mappedBy = "audit")
     private List<CheckList> checkLists;
+
+    public String getCheckSide() {
+        return checkSide;
+    }
+
+    public void setCheckSide(String checkSide) {
+        this.checkSide = checkSide;
+    }
 
     public List<CheckList> getCheckLists() {
         return checkLists;
@@ -77,14 +82,6 @@ public class Audit {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public CheckSides getCheckSide() {
-        return checkSide;
-    }
-
-    public void setCheckSide(CheckSides checkSide) {
-        this.checkSide = checkSide;
     }
 
     public String getName() {

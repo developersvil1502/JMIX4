@@ -2,6 +2,7 @@ package com.company.jmix4.service;
 
 import com.company.jmix4.entity.Audit;
 import com.company.jmix4.entity.CheckList;
+import com.company.jmix4.entity.CheckSides;
 import com.company.jmix4.entity.Template;
 import io.jmix.core.DataManager;
 import org.springframework.stereotype.Service;
@@ -29,9 +30,11 @@ public class AuditService {
             checkList.setAudit(audit);
             checklists.add(checkList);
         }
-
         return checklists;
     }
 
 
+    public String convertCheckSideToAuditCheckSide(Collection<CheckSides> checkSides) {
+        return checkSides.stream().findFirst().get().getName();
+    }
 }

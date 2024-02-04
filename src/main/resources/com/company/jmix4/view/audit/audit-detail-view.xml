@@ -31,10 +31,20 @@
             <textArea id="descriptionField" height="9.5em" property="description"/>
             <datePicker id="dateEndField" property="dateEnd"/>
             <select id="statusAuditField" property="statusAudit"/>
+            <textField id="checkSideField" property="checkSide"/>
+<!--            <entityPicker   dataContainer="auditDc"-->
+<!--                            id="checkSidesField"-->
+<!--                            property="checkSide">-->
+<!--                <actions>-->
+<!--                    <action id="entityLookup2" type="entity_lookup"/>-->
+<!--                    <action id="entityClear" type="entity_clear"/>-->
+<!--                </actions>-->
+<!--            </entityPicker>-->
         </formLayout>
         <hbox id="buttonsPanel" classNames="buttons-panel">
             <button action="checkListsDataGrid.create"/>
             <button action="checkListsDataGrid.add"/>
+            <button action="checkListsDataGrid.addCheckSide"/>
             <button action="checkListsDataGrid.edit"/>
             <button action="checkListsDataGrid.remove"/>
         </hbox>
@@ -42,6 +52,7 @@
             <actions>
                 <action id="create" type="list_create"/>
                 <action id="add" text="Add"/>
+                <action id="addCheckSide" text="addCheckSide"/>
                 <action id="edit" type="list_edit"/>
                 <action id="remove" type="list_remove"/>
             </actions>

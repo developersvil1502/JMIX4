@@ -30,17 +30,6 @@ public class CheckSides {
     @Column(name = "PLACE")
     private String place;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "checkSide")
-    private Audit audit;
-
-    public Audit getAudit() {
-        return audit;
-    }
-
-    public void setAudit(Audit audit) {
-        this.audit = audit;
-    }
-
     public String getPlace() {
         return place;
     }

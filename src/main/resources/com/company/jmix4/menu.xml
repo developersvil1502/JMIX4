@@ -8,9 +8,9 @@
         <item view="PointCheckList.list"
               title="msg://com.company.jmix4.view.pointchecklist/pointCheckListListView.title"/>
         <item view="CheckList.list" title="msg://com.company.jmix4.view.checklist/checkListListView.title"/>
-        <item view="CheckSides.list" title="msg://com.company.jmix4.view.checksides/checkSidesListView.title"/>
         <item view="Audit_.list" title="msg://com.company.jmix4.view.audit/auditListView.title"/>
         <item view="Template.list.select" title="msg://com.company.jmix4.view.template/templateListViewSelect.title"/>
+        <item view="CheckSides.list" title="msg://com.company.jmix4.view.checksides/checkSidesListView.title"/>
     </menu>
 
 </menu-config>

@@ -6,13 +6,7 @@
     <data>
         <collection id="checkSidesesDc"
                     class="com.company.jmix4.entity.CheckSides">
-            <fetchPlan extends="_base">
-                <property name="audit" fetchPlan="_base">
-                    <property name="checkSide" fetchPlan="_base">
-                        <property name="audit" fetchPlan="_base"/>
-                    </property>
-                </property>
-            </fetchPlan>
+            <fetchPlan extends="_base"/>
             <loader id="checkSidesesDl" readOnly="true">
                 <query>
                     <![CDATA[select e from CheckSides e]]>
@@ -56,7 +50,6 @@
                 <column property="name"/>
                 <column property="phone"/>
                 <column property="place"/>
-                <column property="audit"/>
             </columns>
         </dataGrid>
         <hbox id="lookupActions" visible="false">

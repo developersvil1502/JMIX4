@@ -5,13 +5,7 @@
     <data>
         <instance id="checkSidesDc"
                   class="com.company.jmix4.entity.CheckSides">
-            <fetchPlan extends="_base">
-                <property name="audit" fetchPlan="_base">
-                    <property name="checkSide" fetchPlan="_base">
-                        <property name="audit" fetchPlan="_base"/>
-                    </property>
-                </property>
-            </fetchPlan>
+            <fetchPlan extends="_base"/>
             <loader/>
         </instance>
     </data>
@@ -27,12 +21,6 @@
             <textField id="nameField" property="name"/>
             <textField id="phoneField" property="phone"/>
             <textField id="placeField" property="place"/>
-            <entityPicker id="auditField" property="audit">
-                <actions>
-                    <action id="entityLookup" type="entity_lookup"/>
-                    <action id="entityClear" type="entity_clear"/>
-                </actions>
-            </entityPicker>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>
